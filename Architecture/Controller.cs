@@ -17,6 +17,7 @@ namespace Game
 
         public GameWindow(DirectoryInfo imagesDirectory = null)
         {
+            InitializeComponent();
             gameState = new GameState();
             ClientSize = new Size(
                 GameState.ElementSize * Game.MapWidth,
@@ -67,7 +68,7 @@ namespace Game
         {
             e.Graphics.TranslateTransform(0, GameState.ElementSize);
             e.Graphics.FillRectangle(
-                Brushes.Black, 0, 0, GameState.ElementSize * Game.MapWidth,
+                Brushes.Gainsboro, 0, 0, GameState.ElementSize * Game.MapWidth,
                 GameState.ElementSize * Game.MapHeight);
             foreach (var a in gameState.Animations)
                 e.Graphics.DrawImage(bitmaps[a.Creature.GetImageFileName()], a.Location);
@@ -76,7 +77,20 @@ namespace Game
         }
 
 
-        private void GameWindow_Load_1(object sender, EventArgs e)
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // GameWindow
+            // 
+            this.ClientSize = new System.Drawing.Size(600, 600);
+            this.Name = "GameWindow";
+            this.Load += new System.EventHandler(this.GameWindow_Load);
+            this.ResumeLayout(false);
+
+        }
+
+        private void GameWindow_Load(object sender, EventArgs e)
         {
 
         }
