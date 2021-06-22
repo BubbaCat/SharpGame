@@ -8,7 +8,8 @@ namespace Game
         [STAThread]
         private static void Main()
         {
-            Application.Run(new Window());
+            Game.CreateMap();
+            Application.Run(new GameWindow());
         }
     }
 }
