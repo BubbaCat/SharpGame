@@ -7,5 +7,55 @@ using System.Windows.Forms;
 
 namespace Game
 {
+    public class GameWindow : Form
+    {
+        private readonly Dictionary<string, Bitmap> bitmaps = new Dictionary<string, Bitmap>();
+        private readonly GameState gameState;
+        private readonly HashSet<Keys> pressedKeys = new HashSet<Keys>();
+        private int tickCount;
 
+
+        public GameWindow(DirectoryInfo imagesDirectory = null)
+        {
+            gameState = new GameState();
+            ClientSize = new Size(
+                GameState.ElementSize * Game.MapWidth,
+                GameState.ElementSize * Game.MapHeight + GameState.ElementSize);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            if (imagesDirectory == null)
+                imagesDirectory = new DirectoryInfo("Images");
+            foreach (var e in imagesDirectory.GetFiles("*.png"))
+                bitmaps[e.Name] = (Bitmap)Image.FromFile(e.FullName);
+            var timer = new Timer();
+            timer.Interval = 15;
+            timer.Tick += TimerTick;
+            timer.Start();
+        }
+
+        private void TimerTick(object sender, EventArgs args)
+        {
+            if (tickCount == 0) gameState.BeginAct();
+            foreach (var e in gameState.Animations)
+                e.Location = new Point(e.Location.X + 4 * e.Command.DeltaX, e.Location.Y + 4 * e.Command.DeltaY);
+            if (tickCount == 7)
+                gameState.EndAct();
+            tickCount++;
+            if (tickCount == 8) tickCount = 0;
+            Invalidate();
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            this.ClientSize = new System.Drawing.Size(282, 253);
+            this.Name = "Game";
+            this.Load += new System.EventHandler(this.GameWindow_Load);
+            this.ResumeLayout(false);
+        }
+
+        private void GameWindow_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
