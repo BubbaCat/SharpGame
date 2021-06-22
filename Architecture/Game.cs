@@ -53,6 +53,60 @@ namespace Game
             this.ResumeLayout(false);
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            Text = "Game";
+            DoubleBuffered = true;
+        }
+
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            pressedKeys.Add(e.KeyCode);
+            Game.KeyPressed = e.KeyCode;
+        }
+
+        protected override void OnKeyUp(KeyEventArgs e)
+        {
+            pressedKeys.Remove(e.KeyCode);
+            Game.KeyPressed = pressedKeys.Any() ? pressedKeys.Min() : Keys.None;
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            e.Graphics.TranslateTransform(0, GameState.ElementSize);
+            e.Graphics.FillRectangle(
+                Brushes.Black, 0, 0, GameState.ElementSize * Game.MapWidth,
+                GameState.ElementSize * Game.MapHeight);
+            foreach (var a in gameState.Animations)
+                e.Graphics.DrawImage(bitmaps[a.Creature.GetImageFileName()], a.Location);
+            e.Graphics.ResetTransform();
+            e.Graphics.DrawString(Game.Scores.ToString(), new Font("Arial", 16), Brushes.Green, 0, 0);
+        }
+
+
+        private void TimerTick(object sender, EventArgs args)
+        {
+            if (tickCount == 0) gameState.BeginAct();
+            foreach (var e in gameState.Animations)
+                e.Location = new Point(e.Location.X + 4 * e.Command.DeltaX, e.Location.Y + 4 * e.Command.DeltaY);
+            if (tickCount == 7)
+                gameState.EndAct();
+            tickCount++;
+            if (tickCount == 8) tickCount = 0;
+            Invalidate();
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            this.ClientSize = new System.Drawing.Size(282, 253);
+            this.Name = "Game";
+            this.Load += new System.EventHandler(this.GameWindow_Load);
+            this.ResumeLayout(false);
+
+        }
+
         private void GameWindow_Load(object sender, EventArgs e)
         {
 
