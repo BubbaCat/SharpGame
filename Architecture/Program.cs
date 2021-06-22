@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Game
@@ -9,7 +10,7 @@ namespace Game
         private static void Main()
         {
             Game.CreateMap();
-            Application.Run(new GameWindow());
+            Application.Run(new GameWindow(new DirectoryInfo("Images")));
         }
     }
 }

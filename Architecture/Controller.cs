@@ -22,8 +22,6 @@ namespace Game
                 GameState.ElementSize * Game.MapWidth,
                 GameState.ElementSize * Game.MapHeight + GameState.ElementSize);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            if (imagesDirectory == null)
-                imagesDirectory = new DirectoryInfo("Images");
             foreach (var e in imagesDirectory.GetFiles("*.png"))
                 bitmaps[e.Name] = (Bitmap)Image.FromFile(e.FullName);
             var timer = new Timer
@@ -88,7 +86,9 @@ namespace Game
             // 
             // GameWindow
             // 
-            this.ClientSize = new System.Drawing.Size(282, 253);
+            this.ClientSize = new System.Drawing.Size(1882, 953);
+            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(1000, 1000);
             this.Name = "GameWindow";
             this.Load += new System.EventHandler(this.GameWindow_Load_1);
             this.ResumeLayout(false);

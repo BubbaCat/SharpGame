@@ -22,7 +22,7 @@ namespace Game
 
                     if (x + command.DeltaX < 0 || x + command.DeltaX >= Game.MapWidth || y + command.DeltaY < 0 ||
                         y + command.DeltaY >= Game.MapHeight)
-                        throw new Exception($"The object {creature.GetType()} falls out of the game field");
+                        throw new Exception($"Out of filed");
 
                     Animations.Add(
                         new CreatureAnimation
@@ -55,7 +55,7 @@ namespace Game
                         aliveCandidates.Remove(candidate);
             if (aliveCandidates.Count > 1)
                 throw new Exception(
-                    $"Creatures {aliveCandidates[0].GetType().Name} and {aliveCandidates[1].GetType().Name} claimed the same map cell");
+                    $"two creatures in one cell");
 
             return aliveCandidates.FirstOrDefault();
         }
