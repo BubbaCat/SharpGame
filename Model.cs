@@ -64,22 +64,75 @@ namespace Game
         }
     }
 
-    public class Terrain : ICreature
+public class Terrain : ICreature
+{
+    public string GetImageFileName()
     {
-
+        return "Floor.png";
     }
 
-
-    public class Wall : ICreature
+    public int GetDrawingPriority()
     {
-        
-       
+        return 1;
+    }
+
+    public CreatureCommand Act(int x, int y)
+    {
+        return new CreatureCommand { };
+    }
+
+    public bool DeadInConflict(ICreature conflictedObject)
+    {
+        return true;
+    }
+}
+
+public class Wall : ICreature
+    {
+
+        public string GetImageFileName()
+        {
+            return "Wall.png";
+        }
+
+        public int GetDrawingPriority()
+        {
+            return 2;
+        }
+
+        public CreatureCommand Act(int x, int y)
+        {
+            return new CreatureCommand { };
+        }
+
+        public bool DeadInConflict(ICreature conflictedObject)
+        {
+            return conflictedObject.GetType() == new Wall().GetType();
+        }
     }
 
 
     public class Door : ICreature
     {
- 
+        public string GetImageFileName()
+        {
+            return "Door.png";
+        }
+
+        public int GetDrawingPriority()
+        {
+            return 2;
+        }
+
+        public CreatureCommand Act(int x, int y)
+        {
+            return new CreatureCommand { };
+        }
+
+        public bool DeadInConflict(ICreature conflictedObject)
+        {
+            return true;
+        }
     }
 
     public class Professor : ICreature
