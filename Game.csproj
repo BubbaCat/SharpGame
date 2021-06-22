@@ -52,10 +52,15 @@
   <ItemGroup>
     <Compile Include="Architecture\View.cs" />
     <Compile Include="Architecture\CreatureMapCreator.cs" />
+    <Compile Include="Architecture\Controller.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Architecture\Controller.Designer.cs">
+      <DependentUpon>Controller.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model_Game.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Architecture\Extensions.cs" />
-    <Compile Include="Architecture\Controller.cs" />
     <Compile Include="Architecture\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Architecture\Controller.resx">

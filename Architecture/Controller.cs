@@ -26,8 +26,10 @@ namespace Game
                 imagesDirectory = new DirectoryInfo("Images");
             foreach (var e in imagesDirectory.GetFiles("*.png"))
                 bitmaps[e.Name] = (Bitmap)Image.FromFile(e.FullName);
-            var timer = new Timer();
-            timer.Interval = 15;
+            var timer = new Timer
+            {
+                Interval = 15
+            };
             timer.Tick += TimerTick;
             timer.Start();
         }
@@ -42,15 +44,6 @@ namespace Game
             tickCount++;
             if (tickCount == 8) tickCount = 0;
             Invalidate();
-        }
-
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            this.ClientSize = new System.Drawing.Size(282, 253);
-            this.Name = "Game";
-            this.Load += new System.EventHandler(this.GameWindow_Load);
-            this.ResumeLayout(false);
         }
 
         protected override void OnLoad(EventArgs e)
@@ -85,6 +78,24 @@ namespace Game
         }
 
         private void GameWindow_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // GameWindow
+            // 
+            this.ClientSize = new System.Drawing.Size(282, 253);
+            this.Name = "GameWindow";
+            this.Load += new System.EventHandler(this.GameWindow_Load_1);
+            this.ResumeLayout(false);
+
+        }
+
+        private void GameWindow_Load_1(object sender, EventArgs e)
         {
 
         }
