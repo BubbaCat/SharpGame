@@ -66,9 +66,11 @@ namespace Game
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            Color myRgbColor = new Color();
+            myRgbColor = Color.FromArgb(170, 168, 169);
             e.Graphics.TranslateTransform(0, GameState.ElementSize);
             e.Graphics.FillRectangle(
-                Brushes.Gainsboro, 0, 0, GameState.ElementSize * Game.MapWidth,
+                new SolidBrush(myRgbColor), 0, 0, GameState.ElementSize * Game.MapWidth,
                 GameState.ElementSize * Game.MapHeight);
             foreach (var a in gameState.Animations)
                 e.Graphics.DrawImage(bitmaps[a.Creature.GetImageFileName()], a.Location);
