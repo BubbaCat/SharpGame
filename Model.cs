@@ -42,7 +42,7 @@ namespace Game
             {
                 dx = 1;
             }
-            bool isOnEdge = x + dx < 0 || y + dy < 0 || x + dx >= Gasme.MapWidth || y + dy >= Game.MapHeight;
+            bool isOnEdge = x + dx < 0 || y + dy < 0 || x + dx >= Game.MapWidth || y + dy >= Game.MapHeight;
             if (isOnEdge || Game.Map[x + dx, y + dy] != null
             && Game.Map[x + dx, y + dy].GetType() == new Wall().GetType())
             {

@@ -1,0 +1,17 @@
+C:\Users\sapov\Desktop\pis\game(2)\obj\Debug\Game.csprojAssemblyReference.cache
+C:\Users\sapov\Desktop\pis\game(2)\obj\Debug\Game.GameWindow.resources
+C:\Users\sapov\Desktop\pis\game(2)\obj\Debug\Game.Properties.Resources.resources
+C:\Users\sapov\Desktop\pis\game(2)\obj\Debug\Game.csproj.GenerateResource.cache
+C:\Users\sapov\Desktop\pis\game(2)\obj\Debug\Game.csproj.CoreCompileInputs.cache
+C:\Users\sapov\Desktop\pis\game(2)\bin\Debug\Images\Student.png
+C:\Users\sapov\Desktop\pis\game(2)\bin\Debug\Images\Door.png
+C:\Users\sapov\Desktop\pis\game(2)\bin\Debug\Images\Professor.png
+C:\Users\sapov\Desktop\pis\game(2)\bin\Debug\Images\Wall.png
+C:\Users\sapov\Desktop\pis\game(2)\bin\Debug\Images\Floor.png
+C:\Users\sapov\Desktop\pis\game(2)\bin\Debug\Game.exe.config
+C:\Users\sapov\Desktop\pis\game(2)\bin\Debug\Game.exe
+C:\Users\sapov\Desktop\pis\game(2)\bin\Debug\Game.pdb
+C:\Users\sapov\Desktop\pis\game(2)\bin\Debug\nunit.framework.dll
+C:\Users\sapov\Desktop\pis\game(2)\obj\Debug\Game.csproj.CopyComplete
+C:\Users\sapov\Desktop\pis\game(2)\obj\Debug\Game.exe
+C:\Users\sapov\Desktop\pis\game(2)\obj\Debug\Game.pdb

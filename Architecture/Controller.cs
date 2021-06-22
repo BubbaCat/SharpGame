@@ -84,29 +84,6 @@ namespace Game
             e.Graphics.DrawString(Game.Scores.ToString(), new Font("Arial", 16), Brushes.Green, 0, 0);
         }
 
-
-        private void TimerTick(object sender, EventArgs args)
-        {
-            if (tickCount == 0) gameState.BeginAct();
-            foreach (var e in gameState.Animations)
-                e.Location = new Point(e.Location.X + 4 * e.Command.DeltaX, e.Location.Y + 4 * e.Command.DeltaY);
-            if (tickCount == 7)
-                gameState.EndAct();
-            tickCount++;
-            if (tickCount == 8) tickCount = 0;
-            Invalidate();
-        }
-
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            this.ClientSize = new System.Drawing.Size(282, 253);
-            this.Name = "Game";
-            this.Load += new System.EventHandler(this.GameWindow_Load);
-            this.ResumeLayout(false);
-
-        }
-
         private void GameWindow_Load(object sender, EventArgs e)
         {
 
