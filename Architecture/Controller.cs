@@ -75,25 +75,6 @@ namespace Game
             e.Graphics.DrawString(Game.Scores.ToString(), new Font("Arial", 16), Brushes.Green, 0, 0);
         }
 
-        private void GameWindow_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // GameWindow
-            // 
-            this.ClientSize = new System.Drawing.Size(1882, 953);
-            this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(1000, 1000);
-            this.Name = "GameWindow";
-            this.Load += new System.EventHandler(this.GameWindow_Load_1);
-            this.ResumeLayout(false);
-
-        }
 
         private void GameWindow_Load_1(object sender, EventArgs e)
         {
