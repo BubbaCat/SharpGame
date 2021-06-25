@@ -5,17 +5,49 @@ namespace Game
     public static class Game
     {
         private const string map = @"
-PTTGTTTTTTTTTTTTTTTTTTTT
-SSSSSSSTTTTTSSSSSSSTTTTT
-TTTMTTSTTTTTSTTMTTSTTTTT
-TTTTTTSTTTTTSTTTTTSTTTTT
-TTTTTTSTTTTTSTTTTTSTTTTT
-TTTMTTGTTTTTGTTMTTGTTTTT
-SSSGSSSTTTTTSSSGSSSTTTTT
-TTTTTTSTTTTTSTTTTTSTTTTT
-TTTTTTGTTTTTGTTTTTGTTTTT
-GTTTTMSTTTTTSTTTTMSTTTTT";
-
+             SSSSSSSSSSSSSSSSSSSSSSSS                                
+             STTTTTTMTSTTTSTTTTTTTTTS                  SSSSSSSSSSSSSS
+             STTTTTTTTSTTTSTTTTTTTTTS                  STTSTTSTTTTTMS
+             STTTTTTTTSTTTSTTTTTTTTTS                  STTSTTSTTTTTTS
+             STTTTTTTTSTTTGTTTTTTTTTS                  STTSTTSTTTTTTS
+             STTTTTTTTSTTTSTTTTTTTTTS                  SGSSSGSTTTTTTS
+             STTTTTTTTSTTTSTTTTTTTTTS                  STTTTTGTTTTTTS
+             STTTTTTTTSTTTSTTTTTTTTTSSSSSSSSSSSSSSSSSSSSSSSTTSSSSSSSS
+             STTTTTTTGSTTTSTTTTTTTTTSTTTTTSTTTGTTTTTTTTSTTSTTSTTTTTTS
+SGSSSSSSSSSSSSSSSSSSSTTTTTSTMTTTTTTTSTTTTTSTTTSTTTTTTTTSTTSTTSTTTTTTS
+TPTTTSTTTTTTTSTTTTTTGTTTTTSSSSSSSGSSSSSSGSSSSSSSSGSSSSSSTTSTTSTTTTTTS
+TTTTTSTTTTTTTSTTTTTTSTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTGTTTTTTS
+TTTTTSSSSSSGSSSSSSSSSTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTSTTTTTTS
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTSSSTTSSSSSSSS
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTGTSTTGTTTTTTS
+TTTTTTTTTTTTTTTTTTTTTTTTTTSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSTSTTSSSSSSSS
+TTTTTTTTTTTTTTTTTTTTTTTTTTS                             STSTTSTTTTTTS
+TTTTTTTTTTTTTTTTTTTTTTTTTTS                             SSSTTGTTTTTTS
+TTTTTTTTTTTTTTTTSSSSSTTTTTS                             STTTTSTTTTTTS
+SSSSSSSSSSSSSSSS    STTTTTS                             STTTTSTTTTTTS
+                    STTTTTS                             STTTTSTTTTTTS
+                    STTTTTS                             SSSSSSSSSSSSS
+                    STTTTTS                                          
+                    STTTTTS                                          
+                    STTTTTS                                          
+                    STTTTTS                                          
+                    STTTTTS                                          
+                    STTTTTS                                          
+                    STTTTTSSSSSS                                     
+                    STTTTTGTTTTS                                     
+                    STTTTTSTTTMS                                     
+                    STTTTTSTTTTS                                     
+         SSSSSSSSSSSSTTTTTSSSSSS                                     
+         STTTTTTTSTTTTTTTTTTTS                                       
+         STTTTTTTSTTTTTTTTTTTS                                       
+         STTTTTTTSSSSTTTTTSSSS                                       
+         STTTTTTTGTTTTTTTTS                                          
+         SGSSSSSSSSGSSSSSSS                                          
+         STSTTTTTTTTS                                                
+         STSTTTTTTTTS                                                
+         SMSTTTTTTTTS                                                
+         SSSSSSSSSSSS                                                
+";
         public static ICreature[,] Map;
         public static int Scores;
         public static bool IsOver;
