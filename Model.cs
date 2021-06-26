@@ -135,6 +135,29 @@ namespace Game
         }
     }
 
+    public class Exit : ICreature
+    {
+        public string GetImageFileName()
+        {
+            return "Exit.png";
+        }
+
+        public int GetDrawingPriority()
+        {
+            return 2;
+        }
+
+        public CreatureCommand Act(int x, int y)
+        {
+            return new CreatureCommand { };
+        }
+
+        public bool DeadInConflict(ICreature conflictedObject)
+        {
+            return true;
+        }
+    }
+
     public class Professor : ICreature
     {
         public string GetImageFileName()

@@ -52,6 +52,8 @@ namespace Game
                     return CreateCreatureByTypeName("Wall");
                 case 'M':
                     return CreateCreatureByTypeName("Professor");
+                case 'E':
+                    return CreateCreatureByTypeName("Exit");
                 case ' ':
                     return null;
                 default:
