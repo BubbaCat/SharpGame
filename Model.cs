@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Game
 {
@@ -252,6 +253,21 @@ namespace Game
                 dy = 0;
             }
             return new CreatureCommand { DeltaY = dy, DeltaX = dx };
+
+            //(int userX, int userY) = FindUser();
+
+            //var path = FindPathToPlayer(x, y, userX, userY).OrderBy(p => p.Length).FirstOrDefault();
+
+            //if (path == null)
+            //    return new CreatureCommand { };
+
+            //var currentPoint = new Point(x, y);
+            //var pointToMove = path;
+            //while (pointToMove.Previous.Value != currentPoint)
+            //    pointToMove = pointToMove.Previous;
+
+            //(int dx, int dy) = Move(x, y, pointToMove.Value);
+            //return new CreatureCommand { DeltaX = dx, DeltaY = dy };
         }
 
         public bool DeadInConflict(ICreature conflictedObject)
@@ -283,6 +299,66 @@ namespace Game
                 }
             }
             return (dx, dy);
+        }
+
+        public IEnumerable<SinglyLinkedList<Point>> FindPathToPlayer(int x, int y, int userX, int userY)
+        {
+            var player = new Point(userX, userY);
+            Queue<SinglyLinkedList<Point>> queue = new Queue<SinglyLinkedList<Point>>();
+            HashSet<Point> VisitedPoints = new HashSet<Point>() { new Point(x, y) };
+            var walls = FindWalls();
+            queue.Enqueue(new SinglyLinkedList<Point>(new Point(x, y), null));
+
+            while (queue.Count != 0)
+            {
+                var currentPoint = queue.Dequeue();
+
+                if (CantMove(currentPoint.Value.X, currentPoint.Value.Y))
+                    continue;
+
+                if (walls.Contains(currentPoint.Value))
+                    continue;
+
+                if (player == currentPoint.Value)
+                    yield return currentPoint;
+
+                for (var dy = -1; dy <= 1; dy++)
+                    for (var dx = -1; dx <= 1; dx++)
+                    {
+                        if (dx == 0 || dy == 0)
+                        {
+                            var nextPoint = new Point(currentPoint.Value.X + dx, currentPoint.Value.Y + dy);
+                            if (!VisitedPoints.Contains(nextPoint))
+                            {
+                                queue.Enqueue(new SinglyLinkedList<Point>(nextPoint, currentPoint));
+                                VisitedPoints.Add(nextPoint);
+                            }
+                        }
+                    }
+            }
+            yield break;
+        }
+
+        public HashSet<Point> FindWalls()
+        {
+            var walls = new HashSet<Point>();
+
+            for (var dx = 0; dx < Game.MapWidth; dx++)
+                for (var dy = 0; dy < Game.MapHeight; dy++)
+                    if (Game.Map[dx, dy] != null && Game.Map[dx, dy].GetType() == new Wall().GetType())
+                        walls.Add(new Point(dx, dy));
+
+            return walls;
+        }
+
+        public bool CantMove(int x, int y)
+        {
+            return x < 0 || x >= Game.MapWidth || y < 0 || y >= Game.MapHeight;
+        }
+
+        public (int, int) GetMoveDirection(int x, int y, Point point)
+        {
+            return (point.X - x, point.Y - y);
         }
 
         public bool CantProfessorMove(int x, int y, int dx, int dy)
