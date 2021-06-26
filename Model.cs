@@ -59,8 +59,16 @@ namespace Game
             {
                 Game.Scores += 10;
             }
+            if (conflictedObject is Exit)
+            {
+                Game.IsOver=true;
+            }
+            if (conflictedObject is Stairs)
+            {
+                Game.ChangeMap();
+            }
             return conflictedObject.GetType() == new Wall().GetType()
-            || conflictedObject.GetType() == new Professor().GetType();
+                   || conflictedObject.GetType() == new Professor().GetType();
         }
     }
 
@@ -139,7 +147,29 @@ namespace Game
     {
         public string GetImageFileName()
         {
-            return "Exit.png";
+            return "Door.png";
+        }
+
+        public int GetDrawingPriority()
+        {
+            return 2;
+        }
+
+        public CreatureCommand Act(int x, int y)
+        {
+            return new CreatureCommand { };
+        }
+
+        public bool DeadInConflict(ICreature conflictedObject)
+        {
+            return true;
+        }
+    }
+    public class Stairs : ICreature
+    {
+        public string GetImageFileName()
+        {
+            return "Door.png";
         }
 
         public int GetDrawingPriority()
@@ -217,8 +247,7 @@ namespace Game
         {
             return Game.Map[x + dx, y + dy] != null &&
             (Game.Map[x + dx, y + dy].GetType() == new Wall().GetType()
-            || Game.Map[x + dx, y + dy].GetType() == new Terrain().GetType()
-            || Game.Map[x + dx, y + dy].GetType() == new Professor().GetType());
+             || Game.Map[x + dx, y + dy].GetType() == new Professor().GetType());
         }
 
         public (int, int) FindUser()

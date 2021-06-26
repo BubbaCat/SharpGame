@@ -4,7 +4,7 @@ namespace Game
 {
     public static class Game
     {
-        private const string map = @"
+        private const string secondFloor = @"
              SSSSSSSSSSSSSSSSSSSSSSSS                                
              STTTTTTMTSTTTSTTTTTTTTTS                  SSSSSSSSSSSSSS
              STTTTTTTTSTTTSTTTTTTTTTS                  STTSTTSTTTTTMS
@@ -14,8 +14,53 @@ namespace Game
              STTTTTTTTSTTTSTTTTTTTTTS                  STTTTTGTTTTTTS
              STTTTTTTTSTTTSTTTTTTTTTSSSSSSSSSSSSSSSSSSSSSSSTTSSSSSSSS
              STTTTTTTGSTTTSTTTTTTTTTSTTTTTSTTTGTTTTTTTTSTTSTTSTTTTTTS
-SESSSSSSSSSSSSSSSSSSSTTTTTSTMTTTTTTTSTTTTTSTTTSTTTTTTTTSTTSTTSTTTTTTS
+SSESSSSSSSSSSSSSSSSSSTTTTTSTMTTTTTTTSTTTTTSTTTSTTTTTTTTSLTSTTSTTTTTTS
 TPTTTSTTTTTTTSTTTTTTGTTTTTSSSSSSSGSSSSSSGSSSSSSSSGSSSSSSTTSTTSTTTTTTS
+TTTTTSTTTTTTTSTTTTTTSTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTGTTTTTTS
+TTTTTSSSSSSGSSSSSSSSSTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTSTTTTTTS
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTSSSTTSSSSSSSS
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTGTSTTGTTTTTTS
+TTTTTTTTTTTTTTTTTTTTTTTTTTSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSTSTTSSSSSSSS
+TTTTTTTTTTTTTTTTTTTTTTTTTTS                             STSTTSTTTTTTS
+TTTTTTTTTTTTTTTTTTTTTTTTTTS                             SSSTTGTTTTTTS
+TTTTTTTTTTTTTTTTSSSSSTTTTTS                             STTTTSTTTTTTS
+SSSSSSSSSSSSSSSS    STTTTTS                             STTTTSTTTTTTS
+                    STTTTTS                             STTTTSTTTTTTS
+                    STTTTTS                             SSSSSSSSSSSSS
+                    STTTTTS                                          
+                    STTTTTS                                          
+                    STTTTTS                                          
+                    STTTTTS                                          
+                    STTTTTS                                          
+                    STTTTTS                                          
+                    STTTTTSSSSSS                                     
+                    STTTTTGTTTTS                                     
+                    STTTTTSTTTMS                                     
+                    STTTTTSTTTTS                                     
+         SSSSSSSSSSSSTTTTTSSSSSS                                     
+         STTTTTTTSTTTTTTTTTTTS                                       
+         STTTTTTTSTTTTTTTTTTTS                                       
+         STTTTTTTSSSSTTTTTSSSS                                       
+         STTTTTTTGTTTTTTTTS                                          
+         SGSSSSSSSSGSSSSSSS                                          
+         STSTTTTTTTTS                                                
+         STSTTTTTTTTS                                                
+         SMSTTTTTTTTS                                                
+         SSSSSSSSSSSS                                                
+";
+
+        private const string firstFloor = @"
+             SSSSSSSSSSSSSSSSSSSSSSSS                                
+             STTTTTTMTSTTTSTTTTTTTTTS                  SSSSSSSSSSSSSS
+             STTTTTTTTSTTTSTTTTTTTTTS                  STTSTTSTTTTTMS
+             STTTTTTTTSTTTSTTTTTTTTTS                  STTSTTSTTTTTTS
+             STTTTTTTTSTTTGTTTTTTTTTS                  STTSTTSTTTTTTS
+             STTTTTTTTSTTTSTTTTTTTTTS                  SGSSSGSTTTTTTS
+             STTTTTTTTSTTTSTTTTTTTTTS                  STTTTTGTTTTTTS
+             STTTTTTTTSTTTSTTTTTTTTTSSSSSSSSSSSSSSSSSSSSSSSTTSSSSSSSS
+             STTTTTTTGSTTTSTTTTTTTTTSTTTTTSTTTGTTTTTTTTSTTSTTSTTTTTTS
+SSSEESSSSSSSSSSSSSSSSTTTTTSTMTTTTTTTSTTTTTSTTTSTTTTTTTTSTTSTTSTTTTTTS
+TTTTTSTTTTTTTSTTTTTTGTTTTTSSSSSSSGSSSSSSGSSSSSSSSGSSSSSSPPSTTSTTTTTTS
 TTTTTSTTTTTTTSTTTTTTSTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTGTTTTTTS
 TTTTTSSSSSSGSSSSSSSSSTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTSTTTTTTS
 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTSSSTTSSSSSSSS
@@ -54,6 +99,7 @@ SSSSSSSSSSSSSSSS    STTTTTS                             STTTTSTTTTTTS
         public static Keys KeyPressed;
         public static int MapWidth => Map.GetLength(0);
         public static int MapHeight => Map.GetLength(1);
-        public static void CreateMap()=> Map = CreatureMapCreator.CreateMap(map);
+        public static void CreateMap()=> Map = CreatureMapCreator.CreateMap(secondFloor);
+        public static void ChangeMap() => Map = CreatureMapCreator.CreateMap(firstFloor,Map);
     }
 }

@@ -13,7 +13,7 @@ namespace Game
         private readonly GameState gameState;
         private readonly HashSet<Keys> pressedKeys = new HashSet<Keys>();
         private int tickCount;
-
+        private Timer timer;
 
         public GameWindow(DirectoryInfo imagesDirectory = null)
         {
@@ -25,9 +25,9 @@ namespace Game
             FormBorderStyle = FormBorderStyle.FixedDialog;
             foreach (var e in imagesDirectory.GetFiles("*.png"))
                 bitmaps[e.Name] = (Bitmap)Image.FromFile(e.FullName);
-            var timer = new Timer
+            timer = new Timer
             {
-                Interval = 15
+                Interval = 20
             };
             timer.Tick += TimerTick;
             timer.Start();
@@ -35,6 +35,12 @@ namespace Game
 
         private void TimerTick(object sender, EventArgs args)
         {
+            if (Game.IsOver)
+            {
+                timer.Stop();
+                MessageBox.Show("Поздравялем с свободой от матфака");
+                this.Close();
+            }
             if (tickCount == 0) gameState.BeginAct();
             foreach (var e in gameState.Animations)
                 e.Location = new Point(e.Location.X + 4 * e.Command.DeltaX, e.Location.Y + 4 * e.Command.DeltaY);
