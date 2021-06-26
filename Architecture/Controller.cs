@@ -24,10 +24,12 @@ namespace Game
                 GameState.ElementSize * Game.MapHeight + GameState.ElementSize);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             foreach (var e in imagesDirectory.GetFiles("*.png"))
+            {
                 bitmaps[e.Name] = (Bitmap)Image.FromFile(e.FullName);
+            }
             timer = new Timer
             {
-                Interval = 20
+                Interval = 10
             };
             timer.Tick += TimerTick;
             timer.Start();
@@ -38,7 +40,7 @@ namespace Game
             if (Game.IsOver)
             {
                 timer.Stop();
-                MessageBox.Show("Поздравялем с свободой от матфака");
+                MessageBox.Show("Поздравялем со свободой от матфака");
                 this.Close();
             }
             if (tickCount == 0) gameState.BeginAct();
@@ -88,11 +90,21 @@ namespace Game
         private void InitializeComponent()
         {
             this.SuspendLayout();
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+
+            // Set the MinimizeBox to false to remove the minimize box.
+            MinimizeBox = false;
+
+            // Set the start position of the form to the center of the screen.
+            StartPosition = FormStartPosition.CenterScreen;
             // 
             // GameWindow
             // 
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(600, 600);
             this.Name = "GameWindow";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Load += new System.EventHandler(this.GameWindow_Load);
             this.ResumeLayout(false);
 
@@ -100,7 +112,6 @@ namespace Game
 
         private void GameWindow_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

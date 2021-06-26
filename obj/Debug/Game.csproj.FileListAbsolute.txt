@@ -17,3 +17,8 @@ C:\Users\sapov\Desktop\pis\game(2)\obj\Debug\Game.csproj.CopyComplete
 C:\Users\sapov\Desktop\pis\game(2)\obj\Debug\Game.exe
 C:\Users\sapov\Desktop\pis\game(2)\obj\Debug\Game.pdb
 C:\Users\sapov\Desktop\pis\game(2)\obj\Debug\Game.csprojAssemblyReference.cache
+C:\Users\sapov\Desktop\pis\game(2)\bin\Debug\Images\Exit.png
+C:\Users\sapov\Desktop\pis\game(2)\bin\Debug\Images\Stairs.png
+C:\Users\sapov\Desktop\pis\game(2)\bin\Debug\Images\Tree.png
+C:\Users\sapov\Desktop\pis\game(2)\bin\Debug\Images\tree1.png
+C:\Users\sapov\Desktop\pis\game(2)\bin\Debug\Images\Grass.png

@@ -83,6 +83,10 @@ namespace Game
                     return CreateCreatureByTypeName("Exit");
                 case 'L':
                     return CreateCreatureByTypeName("Stairs");
+                case 'Z':
+                    return CreateCreatureByTypeName("Grass");
+                case 'B':
+                    return CreateCreatureByTypeName("Tree");
                 case ' ':
                     return null;
                 default:

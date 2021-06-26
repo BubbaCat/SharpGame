@@ -63,10 +63,6 @@ namespace Game
             {
                 Game.IsOver=true;
             }
-            if (conflictedObject is Stairs)
-            {
-                Game.ChangeMap();
-            }
             return conflictedObject.GetType() == new Wall().GetType()
                    || conflictedObject.GetType() == new Professor().GetType();
         }
@@ -119,6 +115,29 @@ namespace Game
         }
     }
 
+    public class Tree : ICreature
+    {
+
+        public string GetImageFileName()
+        {
+            return new Random(1).Next(0,2)>1 ? "Tree.png" : "tree1.png";
+        }
+
+        public int GetDrawingPriority()
+        {
+            return 2;
+        }
+
+        public CreatureCommand Act(int x, int y)
+        {
+            return new CreatureCommand { };
+        }
+
+        public bool DeadInConflict(ICreature conflictedObject)
+        {
+            return conflictedObject.GetType() == new Wall().GetType();
+        }
+    }
 
     public class Door : ICreature
     {
@@ -147,7 +166,7 @@ namespace Game
     {
         public string GetImageFileName()
         {
-            return "Door.png";
+            return "Exit.png";
         }
 
         public int GetDrawingPriority()
@@ -169,7 +188,30 @@ namespace Game
     {
         public string GetImageFileName()
         {
-            return "Door.png";
+            return "Stairs.png";
+        }
+
+        public int GetDrawingPriority()
+        {
+            return 2;
+        }
+
+        public CreatureCommand Act(int x, int y)
+        {
+            return new CreatureCommand { };
+        }
+
+        public bool DeadInConflict(ICreature conflictedObject)
+        {
+            return true;
+        }
+    }
+
+    public class Grass : ICreature
+    {
+        public string GetImageFileName()
+        {
+            return "Grass.png";
         }
 
         public int GetDrawingPriority()
